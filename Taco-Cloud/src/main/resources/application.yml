@@ -12,6 +12,13 @@ spring:
       host: 192.168.3.185
       port: 6379
       database: 0
+    mongodb:
+      host: localhost
+      port: 27017
+      database: demo
+      username: root
+      password: root
+
 
 springdoc:
   packages-to-scan: ##需要扫描的包,可以配置多个

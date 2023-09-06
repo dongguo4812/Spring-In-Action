@@ -3,6 +3,7 @@ package com.dongguo.tacocloud.controller;
 
 import com.dongguo.tacocloud.entity.Ingredient;
 import com.dongguo.tacocloud.entity.Ingredient.Type;
+import com.dongguo.tacocloud.entity.MyCollection;
 import com.dongguo.tacocloud.entity.Taco;
 import com.dongguo.tacocloud.entity.TacoOrder;
 import com.dongguo.tacocloud.service.JdbcOrderService;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -81,4 +83,14 @@ public class DesignTacoController {
     public String redis() {
         return stringRedisTemplate.opsForValue().get("10");
     }
+
+    @Autowired
+    private MongoTemplate mongoTemplate;//引入的对象
+    @PostMapping("/mongoDB")
+    @Operation(summary = "缓存数据")
+    public String mongoDb() {
+        mongoTemplate.insert(new MyCollection(2L,"李四",28,"男"));
+        return "OK";
+    }
+
 }
