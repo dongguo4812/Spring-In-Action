@@ -7,7 +7,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
-
+  data:
+    redis:
+      host: 192.168.3.185
+      port: 6379
+      database: 0
 
 springdoc:
   packages-to-scan: ##需要扫描的包,可以配置多个

@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -70,5 +71,14 @@ public class DesignTacoController {
     @Operation(summary = "列表")
     public List<Ingredient> list() {
         return jdbcOrderService.list();
+    }
+
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @PostMapping("/redis")
+    @Operation(summary = "缓存数据")
+    public String redis() {
+        return stringRedisTemplate.opsForValue().get("10");
     }
 }
