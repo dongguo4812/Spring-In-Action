@@ -1,2 +1,17 @@
 server:
   port: 9000
+
+springdoc:
+  packages-to-scan: ##需要扫描的包,可以配置多个
+    - com.dongguo.tacocloud.controller
+  paths-to-exclude:  ##配置不包含在swagger文档中的api
+    - /api/test/**
+    - /api/mockito/data
+  swagger-ui:
+    enabled: true  #开启/禁止swagger,prod可以设置为false
+    path: /swagger-ui.html  #swagger页面
+  api-docs:
+    enabled: true #开启/禁止api-docs, prod可以设置为false
+    path: /api-docs #api的json文档
+  use-management-port: false
+
