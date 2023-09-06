@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @Author: Administrator
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Tag(name = "主页管理")
 @Controller
+@RequestMapping("/api")
 public class HomeController {
     @Operation(summary = "主页")
     @GetMapping("/")

@@ -1,6 +1,14 @@
 server:
   port: 9000
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+
+
 springdoc:
   packages-to-scan: ##需要扫描的包,可以配置多个
     - com.dongguo.tacocloud.controller
