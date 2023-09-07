@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -69,7 +71,7 @@ public class DesignTacoController {
     @Autowired
     private JdbcOrderService jdbcOrderService;
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     @Operation(summary = "列表")
     public List<Ingredient> list() {
         return jdbcOrderService.list();
@@ -87,6 +89,7 @@ public class DesignTacoController {
     @Autowired
     private MongoTemplate mongoTemplate;//引入的对象
     @PostMapping("/mongoDB")
+    @PostAuthorize("hasRole('USER')")
     @Operation(summary = "缓存数据")
     public String mongoDb() {
         mongoTemplate.insert(new MyCollection(2L,"李四",28,"男"));
