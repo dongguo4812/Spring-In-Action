@@ -50,4 +50,12 @@ public class SpringDocAutoConfiguration {
                 .pathsToMatch("/design/**")
                 .build();
     }
+
+    @Bean
+    public GroupedOpenApi orderApi() {
+        return GroupedOpenApi.builder()
+                .group("order")
+                .pathsToMatch("/order/**")
+                .build();
+    }
 }
