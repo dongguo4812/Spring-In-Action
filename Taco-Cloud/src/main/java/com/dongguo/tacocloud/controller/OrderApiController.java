@@ -1,10 +1,12 @@
 package com.dongguo.tacocloud.controller;
 
+import com.dongguo.tacocloud.service.KafkaMessageService;
 import com.dongguo.tacocloud.service.MessageService;
 import com.dongguo.tacocloud.service.RabbitOrderMessagingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +33,14 @@ public class OrderApiController {
     @PostMapping("/sendMQMessage")
     public String sendMQMessage() {
         rabbitOrderMessagingService.sendOrder();
+        return "ok";
+    }
+    @Autowired
+    private KafkaMessageService kafkaMessageService;
+
+    @PostMapping("/sendKafkaMessage")
+    public String sendKafkaMessage() {
+        kafkaMessageService.sendOrder();
         return "ok";
     }
 
