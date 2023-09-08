@@ -1,6 +1,7 @@
 package com.dongguo.tacocloud.controller;
 
 import com.dongguo.tacocloud.service.MessageService;
+import com.dongguo.tacocloud.service.RabbitOrderMessagingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order")
 public class OrderApiController {
 
+//    @Autowired
+//    private MessageService messageService;
     @Autowired
-    private MessageService messageService;
-    @Operation(summary = "发送消息")
-    @PostMapping("/sendMessage")
-    public void postOrder() {
-        messageService.sendOrder();
+    private RabbitOrderMessagingService rabbitOrderMessagingService;
+//    @Operation(summary = "发送消息")
+//    @PostMapping("/sendMessage")
+//    public void postOrder() {
+//        messageService.sendOrder();
+//    }
+
+    @PostMapping("/sendMQMessage")
+    public String sendMQMessage() {
+        rabbitOrderMessagingService.sendOrder();
+        return "ok";
     }
 
 }

@@ -18,23 +18,32 @@ spring:
       database: demo
       username: root
       password: root
+  rabbitmq:
+    host: 192.168.3.185
+    port: 5672
+    username: root
+    password: root
+    virtual-host: order
 
-  artemis:
-    mode: native
-    broker-url: tcp://localhost:61616
-    user: admin # 用户名
-    password: admin # 密码
-    send-timeout: 3600 # 发送超时时间
-    pool:
-      enabled: false # 是否创建 JmsPoolConnectionFactory 连接池
-      idle-timeout: 30s # 空闲连接超时时间
-      max-connections: 50 # 连接池中最大连接数
-      max-sessions-per-connection: 100 # 每个连接最大会话
-  jms:
-    template:
-      default-destination: order.queue
-    cache:
-      session-cache-size: 5
+#  artemis:
+#    mode: native
+#    broker-url: tcp://localhost:61616
+#    user: admin # 用户名
+#    password: admin # 密码
+#    send-timeout: 3600 # 发送超时时间
+#    pool:
+#      enabled: false # 是否创建 JmsPoolConnectionFactory 连接池
+#      idle-timeout: 30s # 空闲连接超时时间
+#      max-connections: 50 # 连接池中最大连接数
+#      max-sessions-per-connection: 100 # 每个连接最大会话
+#  jms:
+#    template:
+#      default-destination: order.queue
+#    cache:
+#      session-cache-size: 5
+
+
+
 
 
 springdoc:

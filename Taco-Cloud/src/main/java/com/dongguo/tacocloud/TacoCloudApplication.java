@@ -1,11 +1,13 @@
 package com.dongguo.tacocloud;
 
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jms.annotation.EnableJms;
+import org.springframework.context.annotation.Bean;
+//import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication
-@EnableJms
+//@EnableJms
 public class TacoCloudApplication {
 
 	public static void main(String[] args) {
@@ -13,4 +15,8 @@ public class TacoCloudApplication {
 		System.out.println("SpringDoc url: http://127.0.0.1:9000/swagger-ui.html");
 	}
 
+	@Bean
+	public Jackson2JsonMessageConverter messageConverter() {
+		return new Jackson2JsonMessageConverter();
+	}
 }
