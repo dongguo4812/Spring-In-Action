@@ -4,3 +4,8 @@ management:
   endpoint:
     health:
       show-details: always
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
