@@ -46,14 +46,29 @@ spring:
 #    cache:
 #      session-cache-size: 5
 
-
-
+# actuator对外暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "threaddump,heapdump"
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+# 无效
+#info:
+#  contact:
+#    email: dongguo@123.com
+#    phone: 123456
 
 
 springdoc:
   packages-to-scan: ##需要扫描的包,可以配置多个
     - com.dongguo.tacocloud.controller
-  paths-to-exclude:  ##配置不包含在swagger文档中的api
+  paths-to-exclude: ##配置不包含在swagger文档中的api
     - /api/test/**
     - /api/mockito/data
   swagger-ui:
