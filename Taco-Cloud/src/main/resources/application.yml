@@ -29,6 +29,12 @@ spring:
     consumer:
       group-id: order-group
 
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+
+
 #  artemis:
 #    mode: native
 #    broker-url: tcp://localhost:61616
@@ -58,6 +64,9 @@ management:
       show-details: always
     info:
       enabled: true
+
+
+
 # 无效
 #info:
 #  contact:
