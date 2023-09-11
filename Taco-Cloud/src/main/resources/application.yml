@@ -35,7 +35,6 @@ spring:
         username: admin
         password: admin
 
-
 #  artemis:
 #    mode: native
 #    broker-url: tcp://localhost:61616
